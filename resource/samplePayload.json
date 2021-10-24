@@ -9,7 +9,7 @@
             "username": "etluser",
             "password": "xxxxx"
           },
-          "mssql1": {
+          "mssql2": {
             "DRIVER": "{ODBC Driver 17 for SQL Server}",
             "SERVER": "1450.2222.1112.2357",
             "database": "sqldb2",
