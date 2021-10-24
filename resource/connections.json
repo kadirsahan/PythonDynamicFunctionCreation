@@ -1,0 +1,41 @@
+{
+  "CONNECTIONS": {
+      "T1": {
+        "MSSQL": {
+          "mssql1": {
+            "DRIVER": "{ODBC Driver 17 for SQL Server}",
+            "SERVER": "10.222.111.137",
+            "database": "sqldb1",
+            "username": "etluser",
+            "password": "xxxx"
+          },
+          "mssql1": {
+            "DRIVER": "{ODBC Driver 17 for SQL Server}",
+            "SERVER": "10.222.111.237",
+            "database": "sqldb2",
+            "username": "etluser",
+            "password": "xxxx"
+          }
+
+        },
+        "ORCL": {
+          "orcl1": {
+            "hostname": "orcl1xxx",
+            "port": "1521",
+            "service/sid": "orcl",
+            "username": "hr",
+            "password": "xxxx"
+          },
+          "orcl2": {
+            "hostname": "orcl1xxx",
+            "port": "1521",
+            "service/sid": "orcl",
+            "username": "hr",
+            "password": "xxxx"
+          }
+
+        }
+
+      }
+  }
+}
