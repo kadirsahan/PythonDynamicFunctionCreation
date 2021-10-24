@@ -7,14 +7,14 @@
             "SERVER": "1011.2242.1411.1357",
             "database": "sqldb1",
             "username": "etluser",
-            "password": "xxxx"
+            "password": "xxxxx"
           },
           "mssql1": {
             "DRIVER": "{ODBC Driver 17 for SQL Server}",
             "SERVER": "1450.2222.1112.2357",
             "database": "sqldb2",
             "username": "etluser",
-            "password": "xxxx"
+            "password": "xxxxx"
           }
 
         },
