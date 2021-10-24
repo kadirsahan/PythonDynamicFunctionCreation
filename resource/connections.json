@@ -4,14 +4,14 @@
         "MSSQL": {
           "mssql1": {
             "DRIVER": "{ODBC Driver 17 for SQL Server}",
-            "SERVER": "10.222.111.137",
+            "SERVER": "1011.2242.1411.1357",
             "database": "sqldb1",
             "username": "etluser",
             "password": "xxxx"
           },
           "mssql1": {
             "DRIVER": "{ODBC Driver 17 for SQL Server}",
-            "SERVER": "10.222.111.237",
+            "SERVER": "1450.2222.1112.2357",
             "database": "sqldb2",
             "username": "etluser",
             "password": "xxxx"
