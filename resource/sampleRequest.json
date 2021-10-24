@@ -1,17 +1,13 @@
 {
   "OPS": {
-    "op1": {
-      "opNumber" : "OP101",
+    "op01":{
+      "opNumber" : ["OP101","OP102"],
       "id_number" : "111121701984",
       "id_type": "0001"
     },
-    "op2": {
-      "opNumber" : "OP102",
-      "id1" : "111121701984",
-      "id_type": "0001"
-    },
-    "op3": {
-      "opNumber" : "OP103",
+
+    "op02": {
+      "opNumber" : ["OP103"],
       "id1" : "111121701984",
       "id_type": "0001"
     }

@@ -78,39 +78,39 @@
   },
   "TEMPLATES": {
     "OP101": {
-    "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
-    "id_number" : "id_number",
-    "id_type": "id_type"
-  },
-  "OP102": {
-    "statement": "update cusvdd set id1= substr(id_number,1,12)||'-001', id_type = '0005' where id1='<%id1%>' and id_type='<%id_type%>'",
-    "id_number" : "id1",
-    "id_type": "id_type"
-  },
-  "OP103": {
-    "statement": "delete from cuid where id1='<%id1%>' and id_type='<%id_type%>'",
-    "id_number" : "id1",
-    "id_type": "id_type"
-  },
-  "OP104": {
-    "statement": "delete from cusvdd where id_number='<%id_number%>' and id_type='<%id_type%>'",
-    "id_number" : "id_number",
-    "id_type": "id_type"
-  }
+      "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
+      "id_number": "id_number",
+      "id_type": "id_type",
+      "connid": "mssql1"
+    },
+    "OP102": {
+      "statement": "update cusvdd set id1= substr(id_number,1,12)||'-001', id_type = '0005' where id1='<%id1%>' and id_type='<%id_type%>'",
+      "id_number": "id1",
+      "id_type": "id_type",
+      "connid": "mssql2"
+    },
+    "OP103": {
+      "statement": "delete from cuid where id1='<%id1%>' and id_type='<%id_type%>'",
+      "id_number": "id1",
+      "id_type": "id_type",
+      "connid": "orcl1"
+    },
+    "OP104": {
+      "statement": "delete from cusvdd where id_number='<%id_number%>' and id_type='<%id_type%>'",
+      "id_number": "id_number",
+      "id_type": "id_type",
+      "connid": "orcl2"
+    }
   },
   "OPS": {
-    "op1": {
-      "opNumber" : "OP101",
+    "op01":{
+      "opNumber" : ["OP101","OP102"],
       "id_number" : "111121701984",
       "id_type": "0001"
     },
-    "op2": {
-      "opNumber" : "OP102",
-      "id1" : "111121701984",
-      "id_type": "0001"
-    },
-    "op3": {
-      "opNumber" : "OP103",
+
+    "op02": {
+      "opNumber" : ["OP103"],
       "id1" : "111121701984",
       "id_type": "0001"
     }
