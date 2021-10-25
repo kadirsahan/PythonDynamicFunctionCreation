@@ -1,32 +1,53 @@
-{"TEMPLATES": {
+{
+  "TEMPLATES": {
     "OP101": {
       "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
       "id_number": "id_number",
       "id_type": "id_type",
-      "connid": "mssql1"
+      "connid": "mssql1",
+      "connectionType": "mssql",
+      "statementType": "dml"
     },
     "OP102": {
       "statement": "update cusvdd set id1= substr(id_number,1,12)||'-001', id_type = '0005' where id1='<%id1%>' and id_type='<%id_type%>'",
       "id_number": "id1",
       "id_type": "id_type",
-      "connid": "mssql2"
+      "connid": "mssql2",
+      "connectionType": "mssql",
+      "statementType": "dml"
     },
     "OP103": {
       "statement": "delete from cuid where id1='<%id1%>' and id_type='<%id_type%>'",
       "id_number": "id1",
       "id_type": "id_type",
-      "connid": "orcl1"
+      "connid": "orcl1",
+      "connectionType": "orcl",
+      "statementType": "dml"
     },
     "OP104": {
       "statement": "delete from cusvdd where id_number='<%id_number%>' and id_type='<%id_type%>'",
       "id_number": "id_number",
       "id_type": "id_type",
-      "connid": "orcl2"
+      "connid": "orcl2",
+      "connectionType": "orcl",
+      "statementType": "dml"
     },
     "OP105": {
       "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
       "id_number": "id_number",
       "id_type": "id_type",
-      "connid": "orcl1"
+      "connid": "orcl1",
+      "connectionType": "orcl",
+      "statementType": "dml"
+    },
+    "OP106": {
+      "statement": "select * from cuid where id_number='<%id_number%>' and id_type='<%id_type%>'",
+      "id_number": "id_number",
+      "id_type": "id_type",
+      "connid": "mssql1",
+      "connectionType": "mssql",
+      "statementType": "query"
     }
-  }}
+  }
+
+}

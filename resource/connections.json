@@ -7,14 +7,51 @@
             "SERVER": "1011.2242.1411.1357",
             "database": "sqldb1",
             "username": "etluser",
-            "password": "xxxx"
+            "password": "xxxxx"
           },
           "mssql2": {
             "DRIVER": "{ODBC Driver 17 for SQL Server}",
             "SERVER": "1450.2222.1112.2357",
             "database": "sqldb2",
             "username": "etluser",
+            "password": "xxxxx"
+          }
+
+        },
+        "ORCL": {
+          "orcl1": {
+            "hostname": "orcl1xxx",
+            "port": "1521",
+            "service/sid": "orcl",
+            "username": "hr",
             "password": "xxxx"
+          },
+          "orcl2": {
+            "hostname": "orcl2xxx",
+            "port": "2521",
+            "service/sid": "orcl",
+            "username": "hr",
+            "password": "xxxx"
+          }
+
+        }
+
+      },
+    "T2": {
+      "MSSQL": {
+          "mssql1": {
+            "DRIVER": "{ODBC Driver 17 for SQL Server}",
+            "SERVER": "2011.2242.1411.1357",
+            "database": "sqldb1",
+            "username": "etluser",
+            "password": "xxxxx"
+          },
+          "mssql2": {
+            "DRIVER": "{ODBC Driver 17 for SQL Server}",
+            "SERVER": "2450.2222.1112.2357",
+            "database": "sqldb2",
+            "username": "etluser",
+            "password": "xxxxx"
           }
 
         },
@@ -35,7 +72,6 @@
           }
 
         }
-
-      }
+    }
   }
 }

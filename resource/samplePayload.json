@@ -1,5 +1,6 @@
 {
   "TARGET" : "T1",
+  "EXECUTESTATEMENT": "def executeStatement(connections, ops, templates, target):\n    def prepareStatement(ops, templates):\n        msOplist = []\n        orclOplist = []\n        for op in ops:\n            for opNumber in ops[op]['opNumber']:\n                str_statement = templates[opNumber]['statement']\n                str_statement = str_statement.replace('<%' + templates[opNumber]['id_number'] + '%>',\n                                                      ops[op][templates[opNumber]['id_number']])\n                str_statement = str_statement.replace('<%' + templates[opNumber]['id_type'] + '%>',\n                                                      ops[op][templates[opNumber]['id_type']])\n                opsInfo = {\"statement\": str_statement, \"connid\": templates[opNumber]['connid'], \"opNumber\": opNumber}\n                if templates[opNumber]['connectionType'] == \"mssql\":\n                    msOplist.append(opsInfo)\n                else:\n                    orclOplist.append(opsInfo)\n\n        return msOplist, orclOplist\n\n    msOplist, orclOplist = prepareStatement(ops, templates)\n\n    def prepareConnection(connections, ops, templates):\n        connectionList = {}\n\n        for mssql in connections[target]['MSSQL']:\n            driver = connections[target]['MSSQL'][mssql]['DRIVER']\n            server = connections[target]['MSSQL'][mssql]['SERVER']\n            database = connections[target]['MSSQL'][mssql]['database']\n            username = connections[target]['MSSQL'][mssql]['username']\n            password = connections[target]['MSSQL'][mssql]['password']\n            cnxn = \"DRIVER=<%driver%>;SERVER=<%server%>;DATABASE=<%database%>';UID=<%username%>';PWD=<%password%>)\"\n\n            cnxn = cnxn.replace('<%driver%>', driver)\n            cnxn = cnxn.replace('<%server%>', server)\n            cnxn = cnxn.replace('<%database%>', database)\n            cnxn = cnxn.replace('<%username%>', username)\n            cnxn = cnxn.replace('<%password%>', password)\n            connectionList[mssql] = cnxn\n\n        for orcl in connections[target]['ORCL']:\n            hostname = connections[target]['ORCL'][orcl]['hostname']\n            port = connections[target]['ORCL'][orcl]['port']\n            service = connections[target]['ORCL'][orcl]['service/sid']\n            username = connections[target]['ORCL'][orcl]['username']\n            password = connections[target]['ORCL'][orcl]['username']\n            cnxn = \"<%username%>/<%password%>@<%hostname%>:<%port%>/<%service%>\"\n\n            cnxn = cnxn.replace('<%hostname%>', hostname)\n            cnxn = cnxn.replace('<%port%>', port)\n            cnxn = cnxn.replace('<%service%>', service)\n            cnxn = cnxn.replace('<%username%>', username)\n            cnxn = cnxn.replace('<%password%>', password)\n            connectionList[orcl] = cnxn\n\n        return connectionList\n\n    connectionList = prepareConnection(connections, ops, templates)\n\n    auditList = {}\n\n    def msSqlExecution(msOplist, connectionList):\n        # print(\"mssql connecetion--------\")\n        for op in msOplist:\n            op_cnnx_str = connectionList[op['connid']]\n            # print(op['opNumber'])\n            # print(op_cnnx_str)\n            # cnxn = pyodbc.connect(op_cnnx_str)\n            # cursor = cnxn.cursor()\n            op_statement = op['statement']\n            # print(op_statement)\n            auditList[op['opNumber']] = \"executed succesfully\"\n            # cursor.execute(op_statement)\n            # cnxn.commit()\n\n    def orclExecution(orclOplist, connectionList):\n        # print(\"orcl connecetion--------\")\n        for op in orclOplist:\n            op_cnnx_str = connectionList[op['connid']]\n            # print(op['opNumber'])\n            # print(op_cnnx_str)\n            # cnxn = pyodbc.connect(op_cnnx_str)\n            # cursor = cnxn.cursor()\n            op_statement = op['statement']\n            # print(op_statement)\n            auditList[op['opNumber']] = \"executed succesfully\"\n            # cursor.execute(op_statement)\n            # cnxn.commit()\n\n    msSqlExecution(msOplist, connectionList)\n    orclExecution(orclOplist, connectionList)\n    # print(\"=============\")\n    # print(\"audit\")\n    # print(auditList)\n\n    return auditList",
   "CONNECTIONS": {
       "T1": {
         "MSSQL": {
@@ -8,14 +9,14 @@
             "SERVER": "1011.2242.1411.1357",
             "database": "sqldb1",
             "username": "etluser",
-            "password": "xxxxx"
+            "password": "Z25tbmtmbXI="
           },
           "mssql2": {
             "DRIVER": "{ODBC Driver 17 for SQL Server}",
             "SERVER": "1450.2222.1112.2357",
             "database": "sqldb2",
             "username": "etluser",
-            "password": "xxxxx"
+            "password": "Z25tbmtmbXI="
           }
 
         },
@@ -25,14 +26,14 @@
             "port": "1521",
             "service/sid": "orcl",
             "username": "hr",
-            "password": "xxxx"
+            "password": "Z25tbmtmbXI="
           },
           "orcl2": {
             "hostname": "orcl2xxx",
             "port": "2521",
             "service/sid": "orcl",
             "username": "hr",
-            "password": "xxxx"
+            "password": "Z25tbmtmbXI="
           }
 
         }
@@ -45,14 +46,14 @@
             "SERVER": "2011.2242.1411.1357",
             "database": "sqldb1",
             "username": "etluser",
-            "password": "xxxxx"
+            "password": "Z25tbmtmbXI="
           },
           "mssql2": {
             "DRIVER": "{ODBC Driver 17 for SQL Server}",
             "SERVER": "2450.2222.1112.2357",
             "database": "sqldb2",
             "username": "etluser",
-            "password": "xxxxx"
+            "password": "Z25tbmtmbXI="
           }
 
         },
@@ -62,14 +63,14 @@
             "port": "1521",
             "service/sid": "orcl",
             "username": "hr",
-            "password": "xxxx"
+            "password": "Z25tbmtmbXI="
           },
           "orcl2": {
             "hostname": "orcl1xxx",
             "port": "1521",
             "service/sid": "orcl",
             "username": "hr",
-            "password": "xxxx"
+            "password": "Z25tbmtmbXI="
           }
 
         }
@@ -81,35 +82,48 @@
       "id_number": "id_number",
       "id_type": "id_type",
       "connid": "mssql1",
-      "connectionType": "mssql"
+      "connectionType": "mssql",
+      "statementType": "dml"
     },
     "OP102": {
       "statement": "update cusvdd set id1= substr(id_number,1,12)||'-001', id_type = '0005' where id1='<%id1%>' and id_type='<%id_type%>'",
       "id_number": "id1",
       "id_type": "id_type",
       "connid": "mssql2",
-      "connectionType": "mssql"
+      "connectionType": "mssql",
+      "statementType": "dml"
     },
     "OP103": {
       "statement": "delete from cuid where id1='<%id1%>' and id_type='<%id_type%>'",
       "id_number": "id1",
       "id_type": "id_type",
       "connid": "orcl1",
-      "connectionType": "orcl"
+      "connectionType": "orcl",
+      "statementType": "dml"
     },
     "OP104": {
       "statement": "delete from cusvdd where id_number='<%id_number%>' and id_type='<%id_type%>'",
       "id_number": "id_number",
       "id_type": "id_type",
       "connid": "orcl2",
-      "connectionType": "orcl"
+      "connectionType": "orcl",
+      "statementType": "dml"
     },
     "OP105": {
       "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
       "id_number": "id_number",
       "id_type": "id_type",
       "connid": "orcl1",
-      "connectionType": "orcl"
+      "connectionType": "orcl",
+      "statementType": "dml"
+    },
+    "OP106": {
+      "statement": "select * from cuid where id_number='<%id_number%>' and id_type='<%id_type%>'",
+      "id_number": "id_number",
+      "id_type": "id_type",
+      "connid": "mssql1",
+      "connectionType": "mssql",
+      "statementType": "query"
     }
   },
   "OPS": {
@@ -122,6 +136,11 @@
     "op02": {
       "opNumber" : ["OP103"],
       "id1" : "111121701984",
+      "id_type": "0001"
+    },
+    "op03": {
+      "opNumber" : ["OP106"],
+      "id_number" : "111121701984",
       "id_type": "0001"
     }
   }
