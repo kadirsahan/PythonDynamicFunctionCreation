@@ -1,6 +1,5 @@
 {
   "TARGET" : "T1",
-  "EXECUTESTATEMENT" : "def executeStatement(connections,ops,templates):\n  def prepareStatement(ops,templates):\n    oplist ={}\n    for op in ops:\n      str_statement =templates[ops[op]['opNumber']]['statement']\n      str_statement =str_statement.replace('<%'+templates[ops[op]['opNumber']]['id_number']+'%>',ops[op][templates[ops[op]['opNumber']]['id_number']])\n\n      str_statement = str_statement.replace('<%' + templates[ops[op]['opNumber']]['id_type'] + '%>',ops[op][templates[ops[op]['opNumber']]['id_type']])\n      oplist[ops[op]['opNumber']] = str_statement\n    return oplist\n\n  prepareStatement(ops,templates)\n  oplist = prepareStatement(ops,templates)\n  return oplist",
   "CONNECTIONS": {
       "T1": {
         "MSSQL": {
@@ -100,11 +99,17 @@
       "id_number": "id_number",
       "id_type": "id_type",
       "connid": "orcl2"
+    },
+    "OP105": {
+      "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
+      "id_number": "id_number",
+      "id_type": "id_type",
+      "connid": "orcl1"
     }
   },
   "OPS": {
     "op01":{
-      "opNumber" : ["OP101","OP102"],
+      "opNumber" : ["OP101","OP105"],
       "id_number" : "111121701984",
       "id_type": "0001"
     },

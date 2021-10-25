@@ -1,5 +1,4 @@
-{
-  "TEMPLATES": {
+{"TEMPLATES": {
     "OP101": {
       "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
       "id_number": "id_number",
@@ -23,6 +22,11 @@
       "id_number": "id_number",
       "id_type": "id_type",
       "connid": "orcl2"
+    },
+    "OP105": {
+      "statement": "update cuid set id_number = substr(id_number,1,12)||'-001', id_type = '0005' where id_number='<%id_number%>' and id_type='<%id_type%>'",
+      "id_number": "id_number",
+      "id_type": "id_type",
+      "connid": "orcl1"
     }
-  }
-}
+  }}

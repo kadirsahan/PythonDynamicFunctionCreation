@@ -1,7 +1,7 @@
 {
   "OPS": {
     "op01":{
-      "opNumber" : ["OP101","OP102"],
+      "opNumber" : ["OP101","OP105"],
       "id_number" : "111121701984",
       "id_type": "0001"
     },
